@@ -1,0 +1,33 @@
+Added zero vector method to classs
+
+# --------------
+# Please enter the commit message for your changes. Everything below
+# this paragraph is ignored, and an empty message aborts the commit.
+# Just close the window to accept your message.
+diff --git a/python/scripts/triplevector.py b/python/scripts/triplevector.py
+index e8146de..591623f 100644
+--- a/python/scripts/triplevector.py
++++ b/python/scripts/triplevector.py
+@@ -8,6 +8,10 @@ class TripleVector:
+ 		self.y = float(y)
+ 		self.z = float(z)
+ 
++	@staticmethod
++	def zero():
++		return TripleVector(0,0,0)
++
+     # String represntation
+ 	def __str__(self):
+ 		return '<%s, %s, %s>' % (self.x, self.y, self.z)
+@@ -64,9 +68,8 @@ class TripleVector:
+ 		       (self.z * operand.z)
+  
+ 	# Operations
+-
+ 	def normal(self):
+ 		return self.__copy() / self.magnitude()
+ 
+ 	def magnitude(self):
+-		return (self.x**2 + self.y**2 + self.z**2)**(.5)
++		return (self.x**2 + self.y**2 + self.z**2)**(.5)
+\ No newline at end of file

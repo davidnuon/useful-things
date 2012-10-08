@@ -8,6 +8,10 @@ class TripleVector:
 		self.y = float(y)
 		self.z = float(z)
 
+	@staticmethod
+	def zero():
+		return TripleVector(0,0,0)
+
     # String represntation
 	def __str__(self):
 		return '<%s, %s, %s>' % (self.x, self.y, self.z)
@@ -64,7 +68,6 @@ class TripleVector:
 		       (self.z * operand.z)
  
 	# Operations
-
 	def normal(self):
 		return self.__copy() / self.magnitude()
 
