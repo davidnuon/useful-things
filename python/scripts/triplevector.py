@@ -22,25 +22,33 @@ class TripleVector:
 
 	# Scalar Multiplication
 	def __mul__(self, number):
-		return TripleVector(self.x * number, self.y * number, self.z * number)
-
-	def __rmul__(self, number):
-		return self.__mul__(number)
+		if(type(number) != int or type(number) != float):
+			raise TypeError("Operand must be type int or float")
 
 	# Division
 	def __div__(self, number):
+		if(type(number) != int or type(number) != float):
+			raise TypeError("Operand must be type int or float")
+			
 		return self.__copy() * (number**-1)
 
 	# Arithmetic Operations
 	def __add__(self, operand):
+		if(not isinstance(operand, TripleVector)):
+			raise TypeError("Operand must be type TripleVector")
 		return TripleVector(self.x + operand.x, self.y + operand.y, self.z + operand.z)
 
 	def __sub__(self, operand):
+		if(not isinstance(operand, TripleVector)):
+			raise TypeError("Operand must be type TripleVector")
 		return self.__copy() + -operand
 
 	# Cross product
 	# cross = a ** b
 	def __pow__(self, operand):
+		if(not isinstance(operand, TripleVector)):
+			raise TypeError("Operand must be type TripleVector")
+
 		return TripleVector(self.y*operand.z - self.z*operand.y, 
 			                self.z*operand.x - self.x*operand.z, 
 			                self.z*operand.y - self.y*operand.x)
@@ -48,6 +56,9 @@ class TripleVector:
 	# Dot Project
 	# dp = a & b
 	def __and__(self, operand):
+		if(not isinstance(operand, TripleVector)):
+			raise TypeError("Operand must be type TripleVector")
+
 		return (self.x * operand.x) + \
 		       (self.y * operand.y) + \
 		       (self.z * operand.z)
@@ -59,5 +70,3 @@ class TripleVector:
 
 	def magnitude(self):
 		return (self.x**2 + self.y**2 + self.z**2)**(.5)
-
-ZERO = TripleVector(0,0,0)
