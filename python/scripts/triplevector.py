@@ -71,5 +71,8 @@ class TripleVector:
 	def normal(self):
 		return self.__copy() / self.magnitude()
 
+	def unit(self):
+		return self.normal()
+
 	def magnitude(self):
 		return (self.x**2 + self.y**2 + self.z**2)**(.5)
